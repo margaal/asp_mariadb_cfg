@@ -25,7 +25,7 @@ namespace asp_mariadb_cfg
         {
             services.AddControllers();
             services.AddDbContext<AMCDbContext>(options => options
-                .UseMySql("Server=localhost;Database=asp_mariadb_cfg;User=root;Password=;",
+                .UseMySql("Server=localhost;Database=asp_mariadb_cfg;User=<username>;Password=<password>;",
                     mysqlOptions =>
                         mysqlOptions.ServerVersion(new ServerVersion(new Version(10, 4, 6), ServerType.MariaDb))));
         }
@@ -46,8 +46,7 @@ namespace asp_mariadb_cfg
 
             app.UseEndpoints(endpoints =>
             {
-                
-                endpoints.MapControllerRoute(name: "default", "{controller = Students}/{action = GetStudent}/{id?}");
+                endpoints.MapControllers();       
             });
         }
     }
